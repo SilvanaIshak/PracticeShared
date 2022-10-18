@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
@@ -18,21 +16,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        var textView = findViewById<TextView>(R.id.textView)
-        var txt = findViewById<EditText>(R.id.txt)
-        var btnSave = findViewById<Button>(R.id.btnSave)
-        var toggleButton = findViewById<ToggleButton>(R.id.toggleButton)
+        val textView = findViewById<TextView>(R.id.textView)
+        val txt = findViewById<EditText>(R.id.txt)
+        val btnSave = findViewById<Button>(R.id.btnSave)
+        val toggleButton = findViewById<ToggleButton>(R.id.toggleButton)
 
         //retrieve data
-        var prefs = getSharedPreferences("temp", MODE_PRIVATE)
+        val prefs = getSharedPreferences("temp", MODE_PRIVATE)
         textView.text = prefs.getString("name", "")
         toggleButton.isChecked = prefs.getBoolean("toggleButton", false)
 
 
         btnSave.setOnClickListener {
             //create preference
-            var prefs = getSharedPreferences("temp", MODE_PRIVATE)
-            var editor = prefs.edit()
+            val prefs = getSharedPreferences("temp", MODE_PRIVATE)
+            val editor = prefs.edit()
             editor.putString("name", txt.text.toString())
             editor.putBoolean("toggleButton", toggleButton.isChecked)
 
